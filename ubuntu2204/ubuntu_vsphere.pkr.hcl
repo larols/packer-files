@@ -73,14 +73,13 @@ source "vsphere-iso" "ubuntu" {
   }
 
   iso_paths = ["[sfo-w01-sfo-w01-vc01-sfo-w01-cl01-vsan01] 483c3262-4288-1c8a-497f-78ac4463145c/ubuntu-22.04-live-server-amd64.iso"]
+  
   boot_command = [
-    "<esc><wait>",
-    "<esc><wait>",
-    "<enter><wait>",
-    "/install/vmlinuz initrd=/install/initrd.gz ",
-    "autoinstall ds=nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ",
-    "-- <enter>"
+    "<enter><enter><f6><esc><wait>",
+    "autoinstall ip=dhcp ds=nocloud;<enter><wait>",
+    "<wait><enter>"
   ]
+
   http_directory = "http"
   shutdown_command = "echo 'shutdown -P now' > shutdown.sh; echo 'ubuntu'|sudo -S sh 'shutdown.sh'"
   ssh_username = "vmware"
