@@ -1,0 +1,27 @@
+#cloud-config
+autoinstall:
+  version: 1
+  locale: en_US.UTF-8
+  keyboard: {layout: en, variant: us}
+  network:
+    network:
+      version: 2
+      ethernets:
+        ens192:
+          dhcp4: true
+  storage:
+    layout:
+      name: lvm
+  identity:
+    hostname: ubuntu-template
+    username: vmware
+    password: VMware1!
+  ssh:
+    install-server: true
+    allow-pw: true
+  packages:
+    - openssh-server
+    - curl
+  user-data:
+    disable_root: false
+
