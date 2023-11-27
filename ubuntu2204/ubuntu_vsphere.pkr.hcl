@@ -42,6 +42,11 @@ variable "folder" {
   default = ""
 }
 
+variable "network" {
+  type    = string
+  default = ""
+}
+
 source "vsphere-iso" "ubuntu" {
   vcenter_server      = var.vcenter_server
   username            = var.vsphere_user
