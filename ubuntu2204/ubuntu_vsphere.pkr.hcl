@@ -57,15 +57,22 @@ source "vsphere-iso" "ubuntu" {
   cluster             = var.cluster
   datastore           = var.datastore
   folder              = var.folder
-  network             = var.network
   guest_os_type       = "ubuntu64Guest"
   CPUs                = 2
   RAM                 = 4096
   RAM_reserve_all     = true
-  disk_controller_type = "pvscsi"
-  disk_size           = 20480
-  disk_thin_provisioned = true
-  network_card        = "vmxnet3"
+
+  network_adapters {
+    network = var.network
+    // Add additional network adapter configuration here if needed
+  }
+
+  disk {
+    disk_size             = 20480
+    disk_thin_provisioned = true
+    disk_controller_type  = ["pvscsi"]
+  }
+
   iso_paths           = ["[sfo-w01-sfo-w01-vc01-sfo-w01-cl01-vsan01] 483c3262-4288-1c8a-497f-78ac4463145c/ubuntu-22.04-live-server-amd64.iso"]
   boot_command        = [
     "<esc><wait>",
