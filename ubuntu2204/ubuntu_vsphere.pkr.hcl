@@ -61,8 +61,11 @@ source "vsphere-iso" "ubuntu" {
   CPUs                = 2
   RAM                 = 4096
   RAM_reserve_all     = true
-  disk_controller_type = "pvscsi"
-  disk_size           = 20480
+
+  storage {
+    disk_size = 20480
+    disk_thin_provisioned = true
+  }
 
   network_adapters {
     network      = var.network
