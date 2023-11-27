@@ -22,6 +22,7 @@ autoinstall:
   packages:
     - openssh-server
     - curl
+    - open-vm-tools
   user-data:
     disable_root: false
 
