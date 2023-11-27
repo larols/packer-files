@@ -74,8 +74,8 @@ source "vsphere-iso" "ubuntu" {
 
   iso_paths = ["[sfo-w01-sfo-w01-vc01-sfo-w01-cl01-vsan01] 483c3262-4288-1c8a-497f-78ac4463145c/ubuntu-22.04-live-server-amd64.iso"]
   
-  "boot_command": [
-    <wait><wait><wait><wait><wait><wait><wait><wait><wait>
+  boot_command: [
+    <wait><wait><wait><wait><wait>
     "linux /casper/vmlinuz --- autoinstall ds=\"nocloud-net;seedfrom=http://{{.HTTPIP}}:{{.HTTPPort}}/\"<enter><wait>",
     "initrd /casper/initrd<enter><wait>",
     "boot<enter>",
