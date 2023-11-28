@@ -62,6 +62,7 @@ source "vsphere-iso" "windows11" {
   cpus                = 2
   memory              = 4096
   disk_size           = 61440
+  floppy_files = ["./data/autounattend.xml"]
 }
 
 build {
@@ -70,7 +71,7 @@ build {
   ]
 
   provisioner "windows-shell" {
-    script = "./scripts/your-script.ps1"
+    script = "./scripts/script.ps1"
   }
 }
 
