@@ -7,7 +7,7 @@ packer {
   }
 }
 
-variable "vsphere_server" {
+variable "vcenter_server" {
   type    = string
   default = "your-vcenter-server"
 }
@@ -21,23 +21,23 @@ variable "vsphere_password" {
   sensitive = true
 }
 
-variable "vsphere_datastore" {
+variable "datastore" {
   type    = string
 }
 
-variable "vsphere_datacenter" {
+variable "datacenter" {
   type    = string
 }
 
-variable "vsphere_folder" {
+variable "folder" {
   type    = string
 }
 
-variable "vsphere_cluster" {
+variable "cluster" {
   type    = string
 }
 
-variable "vsphere_network" {
+variable "network" {
   type    = string
 }
 
@@ -62,17 +62,17 @@ variable "admin_password" {
 
 
 source "vsphere-iso" "windows11" {
-  vcenter_server      = var.vsphere_server
+  vcenter_server      = var.vcenter_server
   username            = var.vsphere_user
   password            = var.vsphere_password
   insecure_connection = true
   vm_name             = "HznWindows11Template"
-  datacenter          = var.vsphere_datacenter
-  datastore           = var.vsphere_datastore
-  folder              = var.vsphere_folder
+  datacenter          = var.datacenter
+  datastore           = var.datastore
+  folder              = var.folder
   convert_to_template = true
-  cluster             = var.vsphere_cluster
-  network             = var.vsphere_network
+  cluster             = var.cluster
+  network             = var.network
   guest_os_type       = "windows11_64Guest" // Adjust as needed
   iso_paths = ["[sfo-w01-sfo-w01-vc01-sfo-w01-cl01-vsan01] 483c3262-4288-1c8a-497f-78ac4463145c/en-us_windows_11_business_editions_version_22h2_updated_nov_2023_x64_dvd_19c44474.iso"]
   communicator        = "winrm"
