@@ -101,7 +101,7 @@ build {
   ]
 
   provisioner "windows-shell" {
-    script = "/scripts/script.ps1"
+    script = "/packer-files/win11/scripts/script.ps1"
   }
 }
 
