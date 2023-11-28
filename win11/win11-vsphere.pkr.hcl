@@ -1,3 +1,12 @@
+packer {
+  required_plugins {
+    vsphere = {
+      source  = "github.com/hashicorp/vsphere"
+      version = "~> 1"
+    }
+  }
+}
+
 variable "vsphere_server" {
   type    = string
   default = "your-vcenter-server"
@@ -40,6 +49,18 @@ variable "winrm_password" {
   type    = string
 }
 
+variable "windows_license_key" {
+  type    = string
+  description = "Windows License Key"
+}
+
+variable "admin_password" {
+  type    = string
+  description = "Administrator Password"
+  sensitive = true
+}
+
+
 source "vsphere-iso" "windows11" {
   vcenter_server      = var.vsphere_server
   username            = var.vsphere_user
@@ -62,7 +83,6 @@ source "vsphere-iso" "windows11" {
   cpus                = 2
   memory              = 4096
   disk_size           = 61440
-  floppy_files = ["./data/autounattend.xml"]
 }
 
 build {
@@ -71,7 +91,7 @@ build {
   ]
 
   provisioner "windows-shell" {
-    script = "./scripts/script.ps1"
+    script = "./scripts/your-script.ps1"
   }
 }
 
