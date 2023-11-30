@@ -75,7 +75,7 @@ source "vsphere-iso" "windows11" {
   CPUs                = 2
   RAM                 = 4096
 
-  guest_os_type       = "windows9_64Guest" 
+  guest_os_type       = "windows10_64Guest" 
   iso_paths = ["[sfo-w01-sfo-w01-vc01-sfo-w01-cl01-vsan01] 483c3262-4288-1c8a-497f-78ac4463145c/en-us_windows_11_business_editions_version_22h2_updated_nov_2023_x64_dvd_19c44474.iso"]
   communicator        = "winrm"
   winrm_username      = var.winrm_username
